@@ -1,0 +1,40 @@
+<div class="">
+  <div class="post">    
+      <div class="">
+        <h5 class="card-header">Greets</h5>
+        <div class="card-body">            
+          <table>
+            <thead>                  
+              <tr>                    
+                <th colspan="3"></th>
+              </tr>
+            </thead>                  
+            <tbody>
+              <% @greets.each do |greet| %>
+              <tr>
+                <td class="card col-12 mb-1">
+                  <span>
+                    <%=image_tag("Mr.P.png" , class: " rounded-pill greet-pic")  %>
+                    &nbsp;<span>WinterDev &nbsp; <b>@winterdev</b></span>
+                    <hr>
+                  </span>
+                  <%= greet.content %>
+                  <hr>
+                  <ul>
+                    <li class="control-greet btn btn-outline-info  "><i class="fa fa-eye"></i><%= link_to 'Show', greet ,class: "text-decoration-none text-dark "%></li>
+                    <li class="control-greet btn btn-outline-info"><i class="fa fa-pencil"></i><%= link_to 'Edit', edit_greet_path(greet) ,class: "text-decoration-none text-dark" %></li>
+                    <li class="control-greet btn btn-outline-info"><i class="fa fa-trash"></i><%= link_to 'Destroy', greet, method: :delete, data: { confirm: 'Are you sure?' } ,class: "text-decoration-none text-dark" %></li>
+                  </ul>
+                </td>                      
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <br>
+          <%= link_to 'Greet', new_greet_path, class: "nav-link btn-dark rounded-pill  text-light text-center" %>                        
+      </div>
+    </div>
+  </div>
+</div>
+
+

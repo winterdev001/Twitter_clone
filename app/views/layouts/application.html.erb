@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Greater</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+    <%= stylesheet_link_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" %>
+    <%= javascript_include_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top ">      
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"><i class="fa fa-home"></i>Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class=" fa fa-bolt"></i>Moments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class=" fa fa-bell"></i>Notifications</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fa fa-envelope"></i>Messages</a>
+            </li>
+            <a class="navbar-brand " href="#">Greeter</a>
+          </ul>
+          <form class="form-inline my-4 mr-3 my-lg-0">
+            <input class="form-control rounded-pill mr-3 search" type="search" placeholder="Search ..." aria-label="Search">
+          </form>
+          <span class="rounded-circle mr-4 img"><%=image_tag("Mr.P.png" , class: " rounded-circle avatar")  %></span>          
+          <%= link_to 'Greet', '/greets/new' , class: "nav-link btn-dark rounded-pill  text-light" %>            
+        </div>
+      </nav>
+    </header>
+
+    <section class="container mt-5 mb-5">
+      <div class="row">
+        <div class=" ml-0 position-fixed"> 
+          <div class="card mt-3" style="width: 18rem;"> 
+            <%=image_tag("Mr.P.png" , class: " card-img-top prof")  %>
+            <div class="card-body">
+              <p class="card-text ">
+                <center><span class="lead">WinterDev<img src="https://img.icons8.com/material-sharp/24/000000/verified-account.png" class="" /></span><br>
+                <span>@winterdev</span></center>
+                <div class="row follow-info">
+                  <div class="col-4">
+                  <span>Greets</span><br>
+                  &nbsp; <b>5</b>
+                </div>
+                <div class="col-4">
+                  <span>Following</span>
+                  &nbsp;<b>1</b>
+                </div>
+                <div class="col-4">
+                  <span>Followers</span>
+                  &nbsp;<b>1</b>
+                </div>
+              </div>
+            </p>
+          </div>
+        </div>
+        <div class="card mt-2" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Trends For You</h5>
+            <hr>    
+              <div class="trends">
+                <h6>#Champagnepapi</h6>
+                <span>100 Greets</span>
+                <hr>
+                <h6>#Diveintocode</h6>
+                <span>80 Greets</span>                
+              </div>    
+          </div>
+        </div>
+      </div>   
+
+      <div class="col-6 mt-3 middle-card">
+        <% if flash[:notice] %>
+          <div class="bg-success card col-19 mt-2 ml-4"   >
+            <p class="notice"><%= notice %></p>
+          </div>
+        <% end %>
+        <% if flash[:alert] %>
+          <div class="bg-danger card col-12 mt-2 ml-4" >
+            <p class="alert"><%= alert %></p>
+          </div>
+        <% end %>
+        <div class="card post ml-4 ">      
+          <%= yield %>
+          <div class="card ml-4 ">            
+          </div>
+        </div>
+      </div>     
+      
+      <div class=" position-fixed right-card">
+        <div class="card mt-3" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Who To Follow</h5>
+            <p class="card-text">
+              <span>
+                <img src="https://i.pravatar.cc/30" class="rounded-pill" />
+                &nbsp;<span>John Smith <img src="https://img.icons8.com/material-sharp/24/000000/verified-account.png" class="" />&nbsp; <b>@johnsmith</b></span>
+                <button type="button" class="btn btn-outline-dark rounded-pill follow">Follow</button>
+                <hr>
+              </span>
+              <span>
+                <img src="https://i.pravatar.cc/30" class="rounded-pill" />
+                &nbsp;<span>John Doe &nbsp; <b>@johndoe</b></span>
+                <button type="button" class="btn btn-outline-dark rounded-pill follow">Follow</button>
+                <hr>
+              </span>
+              <span>
+                <img src="https://i.pravatar.cc/30" class="rounded-pill" />
+                &nbsp;<span>Jane Doe &nbsp; <b>@janedoe</b></span>
+                <button type="button" class="btn btn-outline-dark rounded-pill follow">Follow</button>
+                <hr>
+              </span>
+            </p>        
+          </div>
+        </div>
+        <div >
+          <footer >
+            <p class="col-12">
+              <ul class="items">
+                <li class="list">Terms</li>
+                <li class="list">Privacy policy</li>            
+                <li class="list">Ads info</li>
+                <li class="list">More</li>
+              </ul>
+            </p>
+            <span class="year">© 2019 Greeter, Inc.</span>
+          </footer>
+        </div>
+        </div>   
+      </div>
+    </section>  
+  </body>
+</html>
