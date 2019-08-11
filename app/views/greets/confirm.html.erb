@@ -1,0 +1,13 @@
+<div class="card">
+  <h4 class="card-header">Send it with the following contents:?</h4>
+  <div class="card-body">
+    <%= form_with(model: @greet, url: greets_path, local: true) do |form| %>
+    <%= form.hidden_field :content %>
+
+    <p>Content : <%= @greet.content %></p>
+    <%= form.submit :Confirm, class: "btn btn-dark   text-light text-center " %>
+    <%= link_to 'Cancel', greets_path , class: "btn btn-dark   text-light text-center ml-2" %> 
+
+    <% end %>
+  </div>   
+</div>

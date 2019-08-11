@@ -4,7 +4,7 @@
   </div>
   <div class="card-body">
     <p class="card-text">
-      <%= form_with(model: @greet, local: true) do |form| %>
+      <%= form_with(model: @greet, local: true,url: confirm_greets_path) do |form| %>
       <% if @greet.errors.any? %>
         <div id="error_explanation">
           <ul>

@@ -11,6 +11,10 @@ class GreetsController < ApplicationController
   # GET /greets/1.json
   def show
   end
+  # Confirm
+  def confirm
+    @greet = Greet.new(greet_params)
+  end 
 
   # GET /greets/new
   def new
@@ -26,15 +30,13 @@ class GreetsController < ApplicationController
   def create
     @greet = Greet.new(greet_params)
 
-    respond_to do |format|
-      if @greet.save
-        format.html { redirect_to @greet, notice: 'Greet was successfully created.' }
-        format.json { render :show, status: :created, location: @greet }
-      else
-        format.html { render :new }
-        format.json { render json: @greet.errors, status: :unprocessable_entity }
-      end
-    end    
+    if @greet.save
+      # Switch to the list screen and display a message saying "You have created new greet!"
+      redirect_to greets_path, notice: "Greet was successfully created!!"
+    else
+      # Redraw the input form.
+      render :new
+    end  
   end
 
   # PATCH/PUT /greets/1

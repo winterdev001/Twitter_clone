@@ -1,3 +1,31 @@
-<%= render 'form', greet: @greet %>
+<div class="card ml-4">
+  <div class="card-header">
+    New Greet
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      <%= form_with(model: @greet, local: true) do |form| %>
+      <% if @greet.errors.any? %>
+        <div id="error_explanation">
+          <ul>
+            <% @greet.errors.full_messages.each do |message| %>
+            <li class=" card bg-danger inline mr-5 error-msg "><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+     <% end %>
+    <div class="field form-group">
+      <%= form.label :content %>&nbsp;:
+      <%= form.text_area :content ,class: "form-control" %>
+    </div>
+    <div class="actions">
+      <%= form.submit  class: " btn btn-dark   text-light text-center"%>
+      <%= link_to 'Back', greets_path, class: " btn btn-dark   text-light text-center" %>
+  </div>
+  <% end %>
+    </p>
+  </div>
+</div>
+
 
 
